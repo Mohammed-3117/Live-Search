@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Search</title>
+
+</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"</script></script>
+<body>
+<input type="text" id="searchall" placeholder="enter search what you want">&nbsp;
+    <input type="text" id="name" placeholder="enter search name only">
+    <br>
+    <br>
+    <br/>
+    <table width="100%" border="1" style="border-collapse: collapse;">
+    <thead>
+        <th>S.NO</th>
+        <th>Name</th>
+        <th>Course</th>
+        <th>City</th>
+        <th>Ph.No</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Mohammed</td>
+            <td>B.Sc</td>
+            <td>Authoor</td>
+            <td>7708928243</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Faizal</td>
+            <td>M.Sc</td>
+            <td>Thoothukudi</td>
+            <td>8807504703</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Nishan</td>
+            <td>B.Ed</td>
+            <td>Kuwait</td>
+            <td>8363827488</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Abbas</td>
+            <td>B.Com</td>
+            <td>Sattur</td>
+            <td>7493846898</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Ganeshan</td>
+            <td>B.E</td>
+            <td>Thoothukudi</td>
+            <td>83829465556</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Veera</td>
+            <td>Python</td>
+            <td>Thoothukudi</td>
+            <td>8375837477</td>
+        </tr>
+    </tbody>
+    </table>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#searchall').keyup(function(){
+                var search = $(this).val();
+                $('table tbody tr').hide();
+                var len = $('table tbody tr:not(.notfound) td:contains("'+search+'")').length;
+                if(len>0){
+                    $('table tbody tr:not(.notfound) td:contains("'+search+'")').each(function(){
+                        $(this).closest('tr').show();
+                    });
+                }else{
+                    $('.notfound').show();
+                }
+            });
+            $('#name').keyup(function(){
+                var search = $(this).val();
+                $('table tbody tr').hide();
+                var len = $('table tbody tr:not(.notfound) td:nth-child(2):contains("'+search+'")').length;
+                if(len>0){
+                    $('table tbody tr:not(.notfound) td:contains("'+search+'")').each(function(){
+                        $(this).closest('tr').show();
+                    });
+                }else{
+                    $('.notfound').show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
